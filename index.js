@@ -218,11 +218,27 @@ function addTask(event) {
 
 
 function toggleSidebar(show) {
- 
+  const showSideBarBtn = document.getElementById('show-side-bar-btn');
+
+  showSideBarBtn.addEventListener('click', () => {
+    const sideBar = document.getElementById('side-bar-div');
+    sideBar.style.display = show ? 'block' : 'none';
+    showSideBarBtn.style.display = show ? 'none' : 'block';
+  });
+
+  const hideSideBarBtn = document.getElementById('hide-side-bar-btn');
+
+  hideSideBarBtn.addEventListener('click', () => {
+    const sideBar = document.getElementById('side-bar-div');
+    sideBar.style.display = show ? 'block' : 'none';
+    showSideBarBtn.style.display = show ? 'none' : 'block';
+  });
 }
 
-function toggleTheme() {
- 
+function toggleTheme(show) {
+  const isLightTheme = show === 'enabled' || show === true || elements.themeSwitch.checked === true;
+  document.body.classList.toggle('light-theme', isLightTheme);
+  localStorage.setItem('light-theme', (isLightTheme ? 'enabled' : 'disabled'));
 }
 
 
